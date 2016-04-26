@@ -1,0 +1,19 @@
+{% extends 'ArcmediaCmsBundle::base.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts filter="?uglifyjs2" output="bundles/js/new_page.js" combine=true
+    '@ArcmediaCmsBundle/Resources/public/js/jquery.validate.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+{% block content %}
+    <div class="main-section-title inside">
+        <h1 class="h1-h2">
+            {{ 'NEW_PAGE'|trans }}
+        </h1>
+    </div>
+    <section class="main one-colum">
+        {% include 'ArcmediaCmsBundle:Forms:page.html.twig' %}
+    </section>
+{% endblock %}

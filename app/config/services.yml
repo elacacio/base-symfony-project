@@ -1,0 +1,10 @@
+parameters:
+    assetic.asset_factory.class: Arcmedia\CmsBundle\Helper\AutoAssetFactory
+
+services:
+  translator_listener:
+    class: Symfony\Component\HttpKernel\EventListener\TranslatorListener
+    arguments: [@translator, @request_stack]
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, priority: 4 }
+      - { name: kernel.event_listener, event: kernel.finish_request, priority: 0 }

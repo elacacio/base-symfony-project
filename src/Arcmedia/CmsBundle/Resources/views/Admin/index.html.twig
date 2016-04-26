@@ -1,0 +1,22 @@
+{% extends 'ArcmediaCmsBundle::base.html.twig' %}
+{% block title %}{{ title }}{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts filter="?uglifyjs2" output="bundles/js/admin.js" combine=true
+    '@ArcmediaCmsBundle/Resources/public/js/arcmedia_functions.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block content %}
+    <section class="main">
+        {% include 'ArcmediaCmsBundle:Admin:block_table.html.twig' %}
+
+        {% if num_results > bunch %}
+            {% include 'ArcmediaCmsBundle::block_pager.html.twig' %}
+        {% endif %}
+
+        {% include 'ArcmediaCmsBundle:Admin:block_actions.html.twig' %}
+    </section>
+{% endblock %}

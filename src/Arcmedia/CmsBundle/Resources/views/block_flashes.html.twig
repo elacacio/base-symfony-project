@@ -1,0 +1,14 @@
+<div id="flashes">
+    {% for label, flashes in app.session.flashbag.all %}
+        {% for flashMessage in flashes %}
+        <div role="alert" class="row alert alert-{{ label }}">
+            <div class="col-xs-10 col-lg-10">{{ flashMessage|raw }}</div>
+            <div class="col-xs-2 col-lg-2">
+                <button class="btn btn-{{ label }} btn-close btn-sm pull-right">
+                    {{ 'CLOSE_BUTON'|trans }}
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    {% endfor %}
+</div>

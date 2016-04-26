@@ -1,0 +1,39 @@
+<div class="navbar-content">
+    <div class="container no-gutter">
+        <div id="navbar-collapse" class="row collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                {% for page in list_pages %}
+                    {% if default_order %}
+                        {% if loop.index == 1 %}
+                            <li class="active">
+                                <a href="{{ path('detail_page', {'page_alias': page.alias }) }}" class="dropdown-toggle" data-hover="dropdown" data-delay="500" data-close-others="true" role="button" aria-haspopup="true" aria-expanded="false">
+                                    {{ page.title }}
+                                </a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{{ path('detail_page', {'page_alias': page.alias }) }}" class="dropdown-toggle" data-hover="dropdown" data-delay="500" data-close-others="true" role="button" aria-haspopup="true" aria-expanded="false">
+                                    {{ page.title }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% else %}
+                        {% if page.alias == active_page.alias %}
+                            <li class="active">
+                                <a href="{{ path('detail_page', {'page_alias': page.alias }) }}" class="dropdown-toggle" data-hover="dropdown" data-delay="500" data-close-others="true" role="button" aria-haspopup="true" aria-expanded="false">
+                                    {{ page.title }}
+                                </a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{{ path('detail_page', {'page_alias': page.alias }) }}" class="dropdown-toggle" data-hover="dropdown" data-delay="500" data-close-others="true" role="button" aria-haspopup="true" aria-expanded="false">
+                                    {{ page.title }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

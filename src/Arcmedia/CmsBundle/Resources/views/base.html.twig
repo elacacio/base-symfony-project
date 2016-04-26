@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="{{ tag|default('es-ES') }}" dir="{{ direction|default('ltr') }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}ArcMedia{% endblock %}</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="http://www.arcmedia.ch/wp-content/uploads/2014/01/favicon.ico" />
+    {% block stylesheets %}
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+        {% stylesheets filter='?uglifycss' filter='cssrewrite' output="bundles/css/arcmedia.css" combine=true
+        '@ArcmediaCmsBundle/Resources/public/css/bootstrap.min.css'
+        '@ArcmediaCmsBundle/Resources/public/css/main.css'
+        '@ArcmediaCmsBundle/Resources/public/css/head-footer.css'
+        '@ArcmediaCmsBundle/Resources/public/css/bootstrap-theme.min.css'
+        '@ArcmediaCmsBundle/Resources/public/css/toastr.min.css'
+        '@ArcmediaCmsBundle/Resources/public/css/font-awesome.min.css'
+        %}
+        <link href="{{ asset_url }}" rel='stylesheet' type='text/css'>
+        {% endstylesheets %}
+    {% endblock %}
+</head>
+<body class="home-page">
+<nav class="navbar navbar-fixed-top">
+    <div class="navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/" title="Arcmedia">&nbsp;  </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Menú</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="navbar" class="container-fluid"><div class="guide-btn-collapse" style="display: none;">
+            <a href="#"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
+        </div>
+
+        {% block nav_bar %}{% endblock %}
+    </div>
+</nav>
+<div id="page" class="container-fluid">
+    <div id="main-content-section">
+        <div class="container">
+            {% include 'ArcmediaCmsBundle::block_flashes.html.twig' %}
+            <div class="row">
+                <div id="main-content" class="col-xs-12 col-sm-12 col-md-12" role="main">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="page-footer">
+    <div class="container">
+        <div class="row">
+            <p>
+                @ {{ "now"|date("Y") }} Arcmedia AG | This Assessment Test was made by
+                <a href="https://es.linkedin.com/in/jose-acacio-0b243450" target="_blank">
+                    Jose Acacio
+                </a>
+            </p>
+        </div>
+    </div>
+</footer>
+{% block javascripts %}
+    {% javascripts filter='?uglifyjs2' output="bundles/js/arcmedia.js" combine=true
+    '@ArcmediaCmsBundle/Resources/public/js/jquery.js'
+    '@ArcmediaCmsBundle/Resources/public/js/jquery-ui.min.js'
+    '@ArcmediaCmsBundle/Resources/public/js/bootstrap-hover-dropdown.min.js'
+    '@ArcmediaCmsBundle/Resources/public/js/toastr.min.js'
+    'bundles/fosjsrouting/js/router.js'
+    'bundles/js/fos_js_routes.js'
+    %}
+    <script src='{{ asset_url }}' type='text/javascript'></script>
+    {% endjavascripts %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+{% endblock %}
+{% if script_declarations.count > 0 %}
+    <script type="text/javascript">
+        {% for declaration in script_declarations %}
+        {{ declaration|raw }}
+        {% endfor %}
+    </script>
+{% endif %}
+</body>
+</html>

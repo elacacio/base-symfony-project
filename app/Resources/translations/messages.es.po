@@ -1,0 +1,109 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-21 21:45+0100\n"
+"PO-Revision-Date: 2016-04-22 17:14+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Language: es\n"
+"X-Source-Language: C\n"
+
+msgid "TEST_ARCMEDIA"
+msgstr "Test Arc-media"
+
+msgid "CLOSE_BUTON"
+msgstr "Cerrar"
+
+msgid "ERR_INVALID_REQUEST"
+msgstr "Operación no permitida"
+
+msgid "TEST_ARCMEDIA_ADMIN"
+msgstr "Arcmedia - Simple Cms"
+
+msgid "UNEXISTING_PAGE"
+msgstr "La página no existe"
+
+msgid "PAGE_CREATED"
+msgstr "Página creada correctamente"
+
+msgid "FORM_ERROR_CREATING"
+msgstr "Error al crear el formulario"
+
+msgid "PAGE_EDITED"
+msgstr "Pagina editada correctamente"
+
+msgid "FORM_ERROR_EDITING"
+msgstr "Error al editar el formulario"
+
+msgid "ADD_NEW_RECORD"
+msgstr "Añadir nueva página"
+
+msgid "EXPORT_DATA"
+msgstr "Exportar datos a csv"
+
+msgid "ROW"
+msgstr "Fila"
+
+msgid "ORDER"
+msgstr "Orden"
+
+msgid "ACTIVE"
+msgstr "Activa"
+
+msgid "INACTIVE"
+msgstr "Inactiva"
+
+msgid "TITLE"
+msgstr "Título"
+
+msgid "CONTENT"
+msgstr "Contenido"
+
+msgid "ACTIONS"
+msgstr "Acciones"
+
+msgid "EDIT"
+msgstr "Editar"
+
+msgid "DELETE"
+msgstr "Borrar"
+
+msgid "SUCCESS"
+msgstr "Éxito"
+
+msgid "FAILED"
+msgstr "Fallo"
+
+msgid "CONFIRM_DELETE"
+msgstr "¿Estás seguro que quieres borrar esta página?"
+
+msgid "CANCEL"
+msgstr "Cancelar"
+
+msgid "PAGE_TITLE"
+msgstr "Título de la página"
+
+msgid "PAGE_CONTENT"
+msgstr "Contenido"
+
+msgid "SAVE"
+msgstr "Guardar"
+
+msgid "REQUIRED_FIELD"
+msgstr "Requerido"
+
+msgid "ERR_LENGTH_MAX"
+msgstr "Longitud máxima permitida de {0} caracteres"
+
+msgid "ERR_LENGTH_MIN"
+msgstr "Longitud mínima permitida de {0} caracteres"
+
+msgid "NEW_PAGE"
+msgstr "Nueva página"

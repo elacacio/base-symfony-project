@@ -1,0 +1,22 @@
+{% extends 'ArcmediaCmsBundle::base.html.twig' %}
+{% block title %}{{ title }}{% endblock %}
+{% block nav_bar %}
+    {% include 'ArcmediaCmsBundle:Home:nav_bar.html.twig' %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <section class="main">
+        <div class="section-content">
+            {% if active_page %}
+                <h1>
+                    {{ active_page.title }}
+                </h1>
+                <div>
+                    {{ active_page.content|raw }}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+</div>
+{% endblock %}

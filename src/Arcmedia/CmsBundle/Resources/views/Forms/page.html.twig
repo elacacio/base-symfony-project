@@ -1,0 +1,102 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{{ form_errors(form) }}
+{{ form_start(form, {'attr': {'id': 'page-form',  'class': 'form-horizontal'}}) }}
+<fieldset>
+    <div class="section-content">
+        <div class="form-group{% if form_errors(form.title) %} has-error{% endif %}">
+            <label class="col-sm-2 control-label" for="title">
+                {{ 'PAGE_TITLE'|trans }}
+            </label>
+            <div class="col-sm-10">
+                {{ form_widget(form.title) }}
+                {{ form_errors(form.title) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="content">
+                {{ 'PAGE_CONTENT'|trans }}
+            </label>
+            <div class="col-sm-10">
+                {{ form_widget(form.content) }}
+                {{ form_errors(form.content) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">
+                {{ 'ACTIVE'|trans }}
+            </label>
+            <div class="col-sm-10">
+                {{ form_widget(form.active) }}
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset>
+    <div class="section-content">
+        <div class="form-btns">
+            <button class="btn btn-success" type="submit">
+                {{ 'SAVE'|trans }}
+                <span style="display: none;" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+            </button>
+            <a href="{{ path('admin') }}">
+                <button formnovalidate class="btn btn-default cancel-edit" type="button">
+                    {{ 'CANCEL'|trans }}
+                    <span style="display: none;" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+                </button>
+            </a>
+        </div>
+    </div>
+</fieldset>
+{{ form_rest(form) }}
+{{ form_end }}
+
+
+{% script_declaration %}
+<script type="javascript">
+    var validate = $('#page-form').validate({
+        rules: {
+            'newpage[title]': {
+                minlength: 4,
+                maxlength: 60,
+                required: true
+            },
+            'newpage[content]': {
+                minlength: 5,
+                maxlength: 3000,
+                required: true
+            }
+        },
+        highlight: function(element) {
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function(element) {
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function(error, element) {
+            if(element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function (form) {
+            var buttons = $('div.form-btns');
+            buttons.find('button.btn-success').prop('disabled',true);
+            buttons.find('button.btn-success span.glyphicon-refresh-animate').show();
+
+            form.submit();
+        }
+    });
+
+    $.extend(jQuery.validator.messages, {
+        required: "{{ 'REQUIRED_FIELD'|trans }}",
+        maxlength: jQuery.validator.format("{{ 'ERR_LENGTH_MAX'|trans }}"),
+        minlength: jQuery.validator.format("{{ 'ERR_LENGTH_MIN'|trans }}")
+    });
+</script>
+{% endscript_declaration %}

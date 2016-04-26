@@ -1,0 +1,77 @@
+{% if num_results > 0 %}
+    <div class="table table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>{{ 'ROW'|trans }}</th>
+                <th>{{ 'ORDER'|trans }}</th>
+                <th>{{ 'TITLE'|trans }}</th>
+                <th>{{ 'ACTIVE'|trans }}</th>
+                <th>{{ 'CONTENT'|trans }}</th>
+                <th>{{ 'ACTIONS'|trans }}</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for page in list_pages %}
+                <tr data-pid="{{ page.id }}">
+                    <td>{{ page.id }}</td>
+                    <td>{{ page.order }}</td>
+                    <td>{{ page.title }}</td>
+                    <td>
+                        {% if page.active %}
+                            {% include 'ArcmediaCmsBundle:Ajax:link_active.html.twig' %}
+                        {% else %}
+                            {% include 'ArcmediaCmsBundle:Ajax:link_inactive.html.twig' %}
+                        {% endif %}
+                    </td>
+                    <td>{{ page.content|striptags|truncate(50, true)|raw  }}</td>
+                    <td>
+                        <a href="{{ path('editpage', {'page_id': page.id }) }}">
+                            {{ 'EDIT'|trans }}
+                        </a> |
+                        <a class="delete" href="#">
+                            {{ 'DELETE'|trans }}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <input type="hidden" id="success" value="{{ 'SUCCESS' }}">
+    <input type="hidden" id="failed" value="{{ 'FAILED' }}">
+{% endif %}
+
+<div style="display: none;" id="dialog-mask" class="delete-page">
+    <div id="dialog">
+        <div class="dialog-title container">
+            <div class="row">
+                <h4 class="col-xs-10 col-md-10 place-loader">
+                    <span>{{ 'DELETE'|trans }}</span>
+                </h4>
+                <div class="col-xs-2 col-md-2 text-right">
+                    <button class="btn btn-link dialog-close" data-dismiss="modal">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="dialog-body container">
+            <p class="description">
+                {{ 'CONFIRM_DELETE'|trans }}
+            </p>
+            <p class="delete-confirmed" style="display: none;"></p>
+            <div class="delete-page-confirm">
+                <button class="btn btn-success confirm-delete" data-pid="" type="button">
+                    {{ 'DELETE'|trans }}
+                    <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="display: none;"></span>
+                </button>
+                <button class="btn btn-default" type="button" data-dismiss="modal">
+                    {{ 'CANCEL'|trans }}
+                </button>
+                <input type="hidden" name="pchosen" value="">
+            </div>
+        </div>
+    </div>
+</div>

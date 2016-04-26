@@ -1,0 +1,30 @@
+services:
+    cms.manager:
+        class: Arcmedia\CmsBundle\Manager\ArcmediaManager
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @translator.default
+#    cms.validator:
+#        class: Arcmedia\CmsBundle\Manager\ValidatorManager
+#        arguments:
+#            - @doctrine.orm.entity_manager
+#            - @translator.default
+
+    arcmedia.controller.exception:
+        class: Arcmedia\CmsBundle\Controller\ExceptionController
+        arguments:
+            - '@twig'
+            - '%kernel.debug%'
+
+    page.validator:
+        class: Arcmedia\CmsBundle\Manager\ValidatorManager
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @translator.default
+
+    arcmedia.twig_extension:
+        class: Arcmedia\CmsBundle\Twig\ArcmediaExtension
+        arguments: ['@request_stack']
+        public: false
+        tags:
+            - { name: twig.extension }
